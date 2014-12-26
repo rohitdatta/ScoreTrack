@@ -1,0 +1,367 @@
+<html>
+	<head>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.0/angular.js"></script>
+		<script src="app.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.js"></script>
+		<link href="style.css" rel="stylesheet">
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	</head>
+	<body class="container" ng-app="ScoreTracker" ng-controller="MainCtrl">
+		<nav class="navbar navbar-inverse navbar-fixed-top">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<!-- <div class="navbar-header"> -->
+				<!--       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				-->     <!--    <span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span> -->
+				<!-- </button> -->
+				<!-- <a class="navbar-brand" href="#">CIAC Score Tracker</a> -->
+				<!-- </div> -->
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<ul class="nav navbar-nav">
+					<li><a href="#"><b>{{homeTeam}}</b> {{ getHomeTotal() }}</a></li>
+					<li><a href="#"><b>{{awayTeam}}</b></a></li>
+				</ul>
+				<!-- <ul class="nav navbar-nav">
+					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+							<li class="divider"></li>
+							<li><a href="#">One more separated link</a></li>
+						</ul>
+					</li>
+				</ul> -->
+				<!--       <form class="navbar-form navbar-left" role="search">
+					<div class="form-group">
+						<input type="text" class="form-control" placeholder="Search">
+					</div>
+					<button type="submit" class="btn btn-default">Submit</button>
+				</form> -->
+				<!-- <ul class="nav navbar-nav navbar-right">
+					<li><a href="#">Link</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+						<ul class="dropdown-menu" role="menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</li>
+				</ul> -->
+				<!--   </div> --><!-- /.navbar-collapse -->
+				</div><!-- /.container-fluid -->
+			</nav>
+			<div class="row">
+				<!-- <div class="col-md-3" id="leftCol">
+						
+						<div class="nav nav-stacked" id="sidebar">
+								{{homeTeam}}:
+						</div>
+						
+				</div> -->
+				<div class="col-md-6 coll-md-offset-3">
+					<div class="page-header">
+						<br>
+						<br>
+						<div class="alert alert-danger animate-show" ng-hide="awayTeam && homeTeam" role="alert">
+							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+							<span class="sr-only">Warning:</span>
+							Remember to enter both home and away team names
+						</div>
+						<span class="col-md-6">
+						<input class="form-control" placeholder="Home Team" ng-model="homeTeam">
+						</span>
+						<span class="col-md-6">
+						<input class="form-control" placeholder="Away Team" ng-model="awayTeam">
+						</span>
+						<br>
+						<h1 ng-show="awayTeam && homeTeam">{{awayTeam}} at {{homeTeam}}</h1>
+					</div>
+					<h2>Relays</h2>
+					<div ng-repeat="event in relayEvents" class="h3">
+						{{event}}
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<td>{{homeTeam}}</td>
+									<td></td>
+									<td>{{awayTeam}}</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h1st" ng-true-value="8" ng-false-value="0">
+									</td>
+									<td>
+										1st (8)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a1st" ng-true-value="8" ng-false-value="0">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h2nd" ng-true-value="4" ng-false-value="0">
+									</td>
+									<td>
+										2nd (4)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a2nd" ng-true-value="4" ng-false-value="0">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h3rd" ng-true-value="2" ng-false-value="0">
+									</td>
+									<td>
+										3rd (2)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a3rd" ng-true-value="2" ng-false-value="0">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h4th" ng-true-value="0" ng-false-value="0">
+									</td>
+									<td>
+										4th (0)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a4th" ng-true-value="0" ng-false-value="0">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h5th" ng-true-value="0" ng-false-value="0">
+									</td>
+									<td>
+										5th (0)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a5th" ng-true-value="0" ng-false-value="0">
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="h6th" ng-true-value="0" ng-false-value="0">
+									</td>
+									<td>
+										6th (0)
+									</td>
+									<td>
+										<input type="checkbox" ng-model="a6h" ng-true-value="0" ng-false-value="0">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						{{homeTeam}}: {{setHomeRelayValues ($index, h1st, h2nd, h3rd) }} {{awayTeam}}: {{0 + a1st + a2nd + a3rd + a4th + a5th + a6th}}
+					</div>
+					<h2>Individual Events</h2>
+					<div ng-repeat="event in individualEvents" class="h3">
+						{{event}}
+						<!-- <span ng-repeat="place in places" class="h4">
+							{{place}}
+							<input type="checkbox" ng-model>
+						</span> -->
+						<br>
+						<!-- 					<table class="table table-bordered table-striped">
+							<thead>
+								<tr>
+									<td>
+												{{homeTeam}}
+									</td>
+									<td>
+									</td>
+									<td>
+												{{awayTeam}}
+									</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="record in records">
+									<td>
+												<input type="checkbox" ng-model="record.id" ng-true-value="{{record.value}}">
+									</td>
+									<td>{{record.name}}
+									</td>
+									<td>
+												<input type="checkbox">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="table table-bordered table-striped">
+							<colgroup>
+							<col style="width:20px"/>
+							<col/>
+							<col/>
+							</colgroup>
+							<tbody>
+								<tr>
+									<td>
+										{{awayTeam}}
+									</td>
+									<td>
+									</td>
+									<td>
+										{{homeTeam}}
+									</td>
+									<tr ng-repeat="record in records" ng-class="{info:selected[record.id], warning:!selected[record.id] && maxSelected()}">
+											<td>
+															<input
+															type="checkbox"
+															ng-model="selected[record.id]"
+															ng-disabled="!selected[record.id] && maxSelected()"
+															id="{{record.id}}"/>
+											</td>
+											<td>
+															<label for="{{record.id}}">
+																			{{record.name}}
+															</label>
+											</td>
+											<td>
+															<input
+															type="checkbox"
+															ng-model="selected[record.id]"
+															ng-disabled="!selected[record.id] && maxSelected()"
+															id="{{record.id}}"/>
+											</td>
+									</tr>
+								</tbody>
+							</table> -->
+							<table class="table table-bordered">
+								<thead>
+									<tr>
+										<td>{{homeTeam}}</td>
+										<td></td>
+										<td>{{awayTeam}}</td>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h1st" ng-true-value="6" ng-false-value="0">
+										</td>
+										<td>
+											1st
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a1st" ng-true-value="6" ng-false-value="0">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h2nd" ng-true-value="4" ng-false-value="0">
+										</td>
+										<td>
+											2nd
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a2nd" ng-true-value="4" ng-false-value="0">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h3rd" ng-true-value="3" ng-false-value="0">
+										</td>
+										<td>
+											3rd
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a3rd" ng-true-value="3" ng-false-value="0">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h4th" ng-true-value="2" ng-false-value="0">
+										</td>
+										<td>
+											4th
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a4th" ng-true-value="2" ng-false-value="0">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h5th" ng-true-value="1" ng-false-value="0">
+										</td>
+										<td>
+											5th
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a5th" ng-true-value="1" ng-false-value="0">
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<input type="checkbox" ng-model="h6th" ng-true-value="0" ng-false-value="0">
+										</td>
+										<td>
+											6th
+										</td>
+										<td>
+											<input type="checkbox" ng-model="a6h" ng-true-value="0" ng-false-value="0">
+										</td>
+									</tr>
+								</tbody>
+							</table>
+							{{homeTeam}}: {{setHomeIndividualValues ($index, h1st, h2nd, h3rd, h4th, h5th) }} {{awayTeam}}: {{0 + a1st + a2nd + a3rd + a4th + a5th + a6th}}
+							<!-- 						<table>
+								<tr>
+									<td ng-repeat="place in places">
+										{{place}}
+									</td>
+								</tr>
+								<tr>
+									<td>
+										<input type="checkbox" ng-model="value1" ng-true-value="6" ng-false-value="0">
+									</td>
+									<td>
+										<input type="checkbox" ng-model="value2" ng-true-value="4" ng-false-value="0">
+									</td>
+									<td>
+										<input type="checkbox" ng-model="value3" ng-true-value="3" ng-false-value="0">
+									</td>
+									<td>
+										<input type="checkbox" ng-model="value4" ng-true-value="2" ng-false-value="0">
+									</td>
+									<td>
+										<input type="checkbox" ng-model="value5" ng-true-value="1" ng-false-value="0">
+									</td>
+									<td>
+										<input type="checkbox" ng-model="value6" ng-true-value="0" ng-false-value="0">
+									</td>
+								</tr>
+							</table>
+							Total value: {{0 + value1 + value2 + value3 + value4 + value5 + value6}} -->
+							<!-- 	<span ng-repeat="place in places" class="h4">
+							{{place}}
+							</span> -->
+							<!-- <br> -->
+							<!--
+							<input type="checkbox" ng-model="value3">
+							<input type="checkbox" ng-model="value4">
+							<input type="checkbox" ng-model="value5">
+							<input type="checkbox" ng-model="value6"> -->
+						</div>
+					</div>
+				</div>
+			</body>
+		</html>
