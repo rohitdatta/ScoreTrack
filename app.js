@@ -3,6 +3,7 @@ angular.module('ScoreTracker', [])
 '$scope',
 function($scope){
   $scope.individualEvents = [
+  '4x50 Medley Relay',
   '200 Free',
   '200 IM',
   '50 Free',
@@ -10,14 +11,16 @@ function($scope){
   '100 Fly',
   '100 Free',
   '500 Free',
+  '4x50 Free Relay',
   '100 Back',
   '100 Breast',
+  '4x100 Free Relay'
 ];
 
 	$scope.relayEvents = [
-	'4x50 Medley Relay',
-	'4x50 Free Relay',
-	'4x100 Free Relay'
+	
+	
+	
 ];
 	$scope.places = [
 	'1',
@@ -29,28 +32,46 @@ function($scope){
 	];
 
 	$scope.homeRelayEventScores = [
-	0,
-	0,
-	0]
+	]
 
-	$scope.setHomeRelayValues = function(index, h1st, h2nd, h3rd) {
+	$scope.setHomeValues = function(index, h1st, h2nd, h3rd, h4th, h5th) {
 		var total = 0;
-		if (angular.isNumber(h1st)) {
-			total += h1st;
-		}
-		if (angular.isNumber(h2nd)) {
-			total += h2nd;
-		}
-		if (angular.isNumber(h3rd)) {
-			total += h3rd;
+
+		if (index == 0 || index == 8 || index == 11) {
+			if (angular.isNumber(h1st) && h1st == 6)
+				total += 8;
+			if (angular.isNumber(h2nd) && h2nd == 4)
+				total += 4;
+			if (angular.isNumber(h3rd) && h3rd == 3)
+				total += 2;
 		}
 
-		$scope.homeRelayEventScores[index] = total;
-		console.log($scope.homeRelayEventScores[0]);
-		return $scope.homeRelayEventScores[index];
+		else {
+			if (angular.isNumber(h1st)) {
+				total += h1st;
+			}
+			if (angular.isNumber(h2nd)) {
+				total += h2nd;
+			}
+			if (angular.isNumber(h3rd)) {
+				total += h3rd;
+			}
+			if (angular.isNumber(h4th)) {
+				total += h4th;
+			}
+			if (angular.isNumber(h5th)) {
+				total += h5th;
+			}
+		}
+		$scope.homeEventScores[index] = total;
+		console.log($scope.homeEventScores[0]);
+		return $scope.homeEventScores[index];
 	}
 
-	$scope.homeIndividualEventScores = [
+	$scope.homeEventScores = [
+	0,
+	0,
+	0,
 	0,
 	0,
 	0,
@@ -62,38 +83,38 @@ function($scope){
 	0
 	]
 
-	$scope.setHomeIndividualValues = function(index, h1st, h2nd, h3rd, h4th, h5th) {
-		var total = 0;
-		if (angular.isNumber(h1st)) {
-			total += h1st;
-		}
-		if (angular.isNumber(h2nd)) {
-			total += h2nd;
-		}
-		if (angular.isNumber(h3rd)) {
-			total += h3rd;
-		}
-		if (angular.isNumber(h4th)) {
-			total += h4th;
-		}
-		if (angular.isNumber(h5th)) {
-			total += h5th;
-		}
+	// $scope.setHomeIndividualValues = function(index, h1st, h2nd, h3rd, h4th, h5th) {
+	// 	var total = 0;
+	// 	if (angular.isNumber(h1st)) {
+	// 		total += h1st;
+	// 	}
+	// 	if (angular.isNumber(h2nd)) {
+	// 		total += h2nd;
+	// 	}
+	// 	if (angular.isNumber(h3rd)) {
+	// 		total += h3rd;
+	// 	}
+	// 	if (angular.isNumber(h4th)) {
+	// 		total += h4th;
+	// 	}
+	// 	if (angular.isNumber(h5th)) {
+	// 		total += h5th;
+	// 	}
 
 
-		$scope.homeIndividualEventScores[parseInt(index)] = total;
-		// console.log(index + "" + h1st);
-		// console.log($scope.homeIndividualEventScores[0]);
-		return $scope.homeIndividualEventScores[index];
-	}
+	// 	$scope.homeIndividualEventScores[parseInt(index)] = total;
+	// 	// console.log(index + "" + h1st);
+	// 	// console.log($scope.homeIndividualEventScores[0]);
+	// 	return $scope.homeIndividualEventScores[index];
+	// }
 
 
 	$scope.getHomeTotal = function() {
-		var homeIndividualTotal = 0;
-		for (var i = 0; i < $scope.homeIndividualEventScores.length; i++) {
-			homeIndividualTotal += $scope.homeIndividualEventScores[i];
+		var homeTotal = 0;
+		for (var i = 0; i < $scope.homeEventScores.length; i++) {
+			homeTotal += $scope.homeEventScores[i];
 		}
-		return homeIndividualTotal;
+		return homeTotal;
 	}
 
 	// $scope.homeName = "Darien Blue Wave";
