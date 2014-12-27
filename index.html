@@ -19,12 +19,12 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span> -->
 				<!-- </button> -->
-				<!-- <a class="navbar-brand" href="#">CIAC Score Tracker</a> -->
+				<!-- <a class="navbar-brand" >CIAC Score Tracker</a> -->
 				<!-- </div> -->
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<ul class="nav navbar-nav">
-					<li><a href="#"><b>{{homeTeam}}</b> {{ sumArray(homeEventScores) }}</a></li>
-					<li><a href="#"><b>{{awayTeam}}</b> {{ sumArray(awayEventScores) }}</a></li>
+					<li><a ng-show="homeTeam" href="#"><b>{{homeTeam}}</b> {{ sumArray(homeEventScores) }}</a></li>
+					<li><a ng-show="awayTeam" href="#"><b>{{awayTeam}}</b> {{ sumArray(awayEventScores) }}</a></li>
 				</ul>
 				<!-- <ul class="nav navbar-nav">
 					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -72,14 +72,15 @@
 						</div>
 						
 				</div> -->
-				<div class="col-md-6 coll-md-offset-3">
+				<div class="col-md-6 col-md-offset-3">
 					<div class="page-header">
+						<br>
 						<br>
 						<br>
 						<div class="alert alert-danger animate-show" ng-hide="awayTeam && homeTeam" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
 							<span class="sr-only">Warning:</span>
-							Remember to enter both home and away team names
+							You still need to enter the <span ng-hide="homeTeam">home </span><span ng-hide="homeTeam || awayTeam"> and</span><span ng-hide="awayTeam"> away</span> team
 						</div>
 						<span class="col-md-6">
 						<input class="form-control" placeholder="Home Team" ng-model="homeTeam">
@@ -325,7 +326,7 @@
 							{{setHomeValues($index, h1st, h2nd, h3rd, h4th, h5th)}}
 							{{setAwayValues ($index, a1st, a2nd, a3rd, a4th, a5th)}}
 
-							{{homeTeam}}: {{getHomeEventValue($index)}} {{awayTeam}}:  {{getAwayEventValue($index)}}
+							<span ng-show="homeTeam"> {{homeTeam}}: {{getHomeEventValue($index)}}</span><span ng-show="awayTeam"> {{awayTeam}}:  {{getAwayEventValue($index)}} </span>
 							<!-- 						<table>
 								<tr>
 									<td ng-repeat="place in places">
@@ -366,5 +367,10 @@
 						</div>
 					</div>
 				</div>
+				<footer class="footer">
+      <div class="container">
+        <p class="copyright">&copy; <script>document.write(new Date().getFullYear())</script><noscript>2015</noscript> Rohit Datta. All rights reserved. Licensed under <a class="no-decoration" href="http://rohitdatta.com/license/">MIT License</a></p>
+      </div>
+    </footer>
 			</body>
 		</html>
