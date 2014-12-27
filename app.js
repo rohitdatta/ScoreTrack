@@ -2,7 +2,7 @@ angular.module('ScoreTracker', [])
 .controller('MainCtrl', [
 '$scope',
 function($scope){
-  $scope.individualEvents = [
+  $scope.events = [
   '4x50 Medley Relay',
   '200 Free',
   '200 IM',
@@ -16,12 +16,6 @@ function($scope){
   '100 Breast',
   '4x100 Free Relay'
 ];
-
-	$scope.relayEvents = [
-	
-	
-	
-];
 	$scope.places = [
 	'1',
 	'2',
@@ -31,12 +25,61 @@ function($scope){
 	'6'
 	];
 
-	$scope.homeRelayEventScores = [
-	]
+	$scope.awayEventScores = [
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0,
+	0]
+
+	$scope.getHomeEventValue = function(index) {
+		return $scope.homeEventScores[index];
+	}
+
+	$scope.setAwayValues = function(index, a1, a2, a3, a4, a5) {
+		var total = 0;
+		if (index == 0 || index == 8 || index == 11) {
+			if (angular.isNumber(a1) && a1 == 6)
+				total += 8;
+			if (angular.isNumber(a2) && a2 == 4)
+				total += a2;
+			if (angular.isNumber(a3) && a3 == 3)
+				total += 2;
+		}
+
+		else {
+			if (angular.isNumber(a1)) {
+				total += a1;
+			}
+			if (angular.isNumber(a2)) {
+				total += a2;
+			}
+			if (angular.isNumber(a3)) {
+				total += a3;
+			}
+			if (angular.isNumber(a4)) {
+				total += a4;
+			}
+			if (angular.isNumber(a5)) {
+				total += a5;
+			}
+		}
+		$scope.awayEventScores[index] = total;
+	}
+
+	$scope.getAwayEventValue = function(index) {
+		return $scope.awayEventScores[index];
+	}
 
 	$scope.setHomeValues = function(index, h1st, h2nd, h3rd, h4th, h5th) {
 		var total = 0;
-
 		if (index == 0 || index == 8 || index == 11) {
 			if (angular.isNumber(h1st) && h1st == 6)
 				total += 8;
@@ -64,8 +107,8 @@ function($scope){
 			}
 		}
 		$scope.homeEventScores[index] = total;
-		console.log($scope.homeEventScores[0]);
-		return $scope.homeEventScores[index];
+		// console.log($scope.homeEventScores[0]);
+		// return $scope.homeEventScores[index];
 	}
 
 	$scope.homeEventScores = [
@@ -108,13 +151,12 @@ function($scope){
 	// 	return $scope.homeIndividualEventScores[index];
 	// }
 
-
-	$scope.getHomeTotal = function() {
-		var homeTotal = 0;
-		for (var i = 0; i < $scope.homeEventScores.length; i++) {
-			homeTotal += $scope.homeEventScores[i];
+	$scope.sumArray = function(array) {
+		var total = 0;
+		for (var i = 0; i < array.length; i++) {
+			total += array[i];
 		}
-		return homeTotal;
+		return total;
 	}
 
 	// $scope.homeName = "Darien Blue Wave";

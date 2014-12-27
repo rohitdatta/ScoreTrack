@@ -23,8 +23,8 @@
 				<!-- </div> -->
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<ul class="nav navbar-nav">
-					<li><a href="#"><b>{{homeTeam}}</b> {{ getHomeTotal() }}</a></li>
-					<li><a href="#"><b>{{awayTeam}}</b></a></li>
+					<li><a href="#"><b>{{homeTeam}}</b> {{ sumArray(homeEventScores) }}</a></li>
+					<li><a href="#"><b>{{awayTeam}}</b> {{ sumArray(awayEventScores) }}</a></li>
 				</ul>
 				<!-- <ul class="nav navbar-nav">
 					<li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
@@ -173,7 +173,7 @@
 						{{homeTeam}}: {{setHomeValues ($index, h1st, h2nd, h3rd, h4th, h5th) }} {{awayTeam}}: {{0 + a1st + a2nd + a3rd + a4th + a5th + a6th}}
 					</div>
 					<h2>Individual Events</h2> -->
-					<div ng-repeat="event in individualEvents" class="h3">
+					<div ng-repeat="event in events" class="h3">
 						{{event}}
 						<!-- <span ng-repeat="place in places" class="h4">
 							{{place}}
@@ -322,7 +322,10 @@
 									</tr>
 								</tbody>
 							</table>
-							{{homeTeam}}: {{setHomeValues ($index, h1st, h2nd, h3rd, h4th, h5th) }} {{awayTeam}}: {{0 + a1st + a2nd + a3rd + a4th + a5th + a6th}}
+							{{setHomeValues($index, h1st, h2nd, h3rd, h4th, h5th)}}
+							{{setAwayValues ($index, a1st, a2nd, a3rd, a4th, a5th)}}
+
+							{{homeTeam}}: {{getHomeEventValue($index)}} {{awayTeam}}:  {{getAwayEventValue($index)}}
 							<!-- 						<table>
 								<tr>
 									<td ng-repeat="place in places">
