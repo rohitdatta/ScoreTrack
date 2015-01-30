@@ -22,6 +22,47 @@
     <link rel="apple-touch-startup-image" href="startup-image.png">
     <link rel="icon" sizes="192x192" href="android-icon-192.png">
     <link rel="icon" sizes="128x128" href="android-icon-128.png">
+
+    <!-- iPad, retina, portrait -->
+<link href="apple-touch-startup-image-1536x2008.png"
+      media="(device-width: 768px) and (device-height: 1024px)
+         and (orientation: portrait)
+         and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+<!-- iPad, retina, landscape -->
+<link href="apple-touch-startup-image-1496x2048.png"
+      media="(device-width: 768px) and (device-height: 1024px)
+         and (orientation: landscape)
+         and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+<!-- iPad, portrait -->
+<link href="apple-touch-startup-image-768x1004.png"
+      media="(device-width: 768px) and (device-height: 1024px)
+         and (orientation: portrait)
+         and (-webkit-device-pixel-ratio: 1)"
+      rel="apple-touch-startup-image">
+<!-- iPad, landscape -->
+<link href="apple-touch-startup-image-748x1024.png"
+      media="(device-width: 768px) and (device-height: 1024px)
+         and (orientation: landscape)
+         and (-webkit-device-pixel-ratio: 1)"
+      rel="apple-touch-startup-image">
+<!-- iPhone 5 -->
+<link href="apple-touch-startup-image-640x1096.png"
+      media="(device-width: 320px) and (device-height: 568px)
+         and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+<!-- iPhone, retina -->
+<link href="apple-touch-startup-image-640x920.png"
+      media="(device-width: 320px) and (device-height: 480px)
+         and (-webkit-device-pixel-ratio: 2)"
+      rel="apple-touch-startup-image">
+<!-- iPhone -->
+<link href="apple-touch-startup-image-320x460.png"
+      media="(device-width: 320px) and (device-height: 480px)
+         and (-webkit-device-pixel-ratio: 1)"
+      rel="apple-touch-startup-image">
+    
     <link rel="stylesheet" href="style.css">
     <link rel="shortcut icon" type="image/png" href="/favicon.ico"/>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -80,10 +121,10 @@
 
 
 
-
+<!-- 
       <section layout="row" style="padding-top: 10px;" layout-align="center center">
       <md-button ng-href="http://rohitdatta.com/support/add-to-homescreen/" class="md-raised md-primary">Add to home screen</md-button>
-      </section>
+      </section> -->
 
 
 
@@ -124,10 +165,10 @@
                   1st
                 </td>
                 <td>
-                  <md-checkbox ng-model="h1st" ng-true-value="6" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink ng-model="h1st" ng-true-value="6" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="a1st" ng-true-value="6" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="a1st" ng-true-value="6" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
               <tr>
@@ -135,10 +176,10 @@
                   2nd
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="h2nd" ng-true-value="4" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="h2nd" ng-true-value="4" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="a2nd" ng-true-value="4" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="a2nd" ng-true-value="4" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
               <tr>
@@ -146,10 +187,10 @@
                   3rd
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="h3rd" ng-true-value="3" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="h3rd" ng-true-value="3" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="a3rd" ng-true-value="3" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="a3rd" ng-true-value="3" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
               <tr>
@@ -157,10 +198,10 @@
                   4th
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="h4th" ng-true-value="2" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="h4th" ng-true-value="2" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="a4th" ng-true-value="2" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="a4th" ng-true-value="2" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
               <tr>
@@ -168,10 +209,10 @@
                   5th
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="h5th" ng-true-value="1" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="h5th" ng-true-value="1" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox ng-model="a5th" ng-true-value="1" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink ng-model="a5th" ng-true-value="1" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
               <tr>
@@ -179,18 +220,21 @@
                   6th
                 </td>
                 <td>
-                  <md-checkbox ng-model="h6th" ng-true-value="0" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink ng-model="h6th" ng-true-value="0" ng-false-value="0"></md-checkbox>
                 </td>
                 <td>
-                  <md-checkbox type="checkbox" ng-model="a6h" ng-true-value="0" ng-false-value="0"></md-checkbox>
+                  <md-checkbox md-no-ink type="checkbox" ng-model="a6h" ng-true-value="0" ng-false-value="0"></md-checkbox>
                 </td>
               </tr>
             </tbody>
           </table>
           {{setHomeValues($index, h1st, h2nd, h3rd, h4th, h5th)}}
           {{setAwayValues ($index, a1st, a2nd, a3rd, a4th, a5th)}}
-          <span ng-show="homeTeam"> {{homeTeam}}</span><span ng-hide="homeTeam">Home</span>: {{getHomeEventValue($index)}} <span ng-show="awayTeam">{{awayTeam}}</span><span ng-hide="awayTeam">Away</span>:  {{getAwayEventValue($index)}}
-          </md-card>
+          <div class="team-scores">
+          <span ng-show="homeTeam"> {{homeTeam}}: {{getHomeEventValue($index)}}</span> <span ng-show="!homeTeam"> Home: {{getHomeEventValue($index)}}</span>
+			<span ng-show="awayTeam"> {{awayTeam}}: {{getAwayEventValue($index)}}</span><span ng-show="!awayTeam"> Away: {{getAwayEventValue($index)}}</span>   
+			</div>       
+		</md-card>
           <br>
         </div>
       </div>

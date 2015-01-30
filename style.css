@@ -71,6 +71,12 @@ float: right!important;
 
 }*/
 
+.team-scores {
+  margin-left: 10px;
+  font-weight: bold;
+  font-size: 28px;
+}
+
 @media(min-width: 321px) {
   .center {
       width:50%;
