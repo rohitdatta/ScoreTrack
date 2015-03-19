@@ -131,5 +131,7 @@ app.run(function(){
 
 app.config(function($mdThemingProvider) {
   $mdThemingProvider.theme('default')
-    .primaryColor('blue');
+    .primaryColor('blue')
+    .accentColor('green');
+
 });
