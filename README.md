@@ -1,7 +1,7 @@
 # ScoreTrack
 ==================
 
-A web app to track dual meet scores for CIAC Meets
+A web app to track dual meet scores for CIAC Meets.
 
 ## Installation
 This app requires no external dependencies to run after cloning. All JavaScript files are pulled from Google's CDN.
